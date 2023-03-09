@@ -3,7 +3,7 @@
         <h1>This is a to-do list</h1>
         <ul>
             <li v-for="(todo, i) in todos" :key="i">
-                <TodoItem :todo="todo" @delete="deleteTodo(i)" @editTodo="editTodo(i)"/>
+                <TodoItem :todo="todo" @emitDelete="deleteTodo(i)" @emitEdit="editTodo(i)"/>
             </li>
         </ul>
         <form v-if="!isEdit" @submit.prevent="addTodo">

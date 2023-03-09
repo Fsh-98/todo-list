@@ -3,8 +3,8 @@
         <div>
             {{ todo.title }}
         </div>
-        <button @click="$emit('delete', i)">Delete</button>
-        <button @click="$emit('editTodo', i)">Edit</button>
+        <button @click="$emit('emitDelete', i)">Delete</button>
+        <button @click="$emit('emitEdit', i)">Edit</button>
     </div>
 </template>
 
