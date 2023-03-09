@@ -3,7 +3,7 @@
         <h1>This is a to-do list</h1>
         <ul>
             <li v-for="(todo, i) in todos" :key="i">
-                <TodoItem :todo="todo" @emitDelete="deleteTodo(i)" @emitEdit="editTodo(i)"/>
+                <TodoItem :todo="todo" @emitDelete="deleteTodo(i)" @emitEdit="editTodo(i)" />
             </li>
         </ul>
         <form v-if="!isEdit" @submit.prevent="addTodo">
@@ -37,9 +37,12 @@ export default {
     },
     methods: {
         addTodo() {
-            this.todos.push({ title: this.newTodo });
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
-            this.newTodo = "";
+            if (this.newTodo != '') {
+                this.todos.push({ title: this.newTodo });
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(this.todos));
+                this.newTodo = "";
+            }
+
         },
         updateTodo() {
             this.todos[this.editableTodo].title = this.newTodo;
